@@ -48,12 +48,18 @@ A modern, intelligent chatbot system for HICAS (Hindustan Institute of Computer 
 
 ### Installation
 
-1. **Navigate to backend**:
+1. **Clone the Repository**:
 ```bash
-cd backend
+git clone https://github.com/rakesh-s-omen/chat-bot-.git
+cd chat-bot-
 ```
 
-2. **Create virtual environment**:
+2. **Setup AI Model (Ollama)**:
+- Download and install [Ollama](https://ollama.com/download)
+- Run: `ollama pull phi3`
+- Keep Ollama running in the background
+
+3. **Create virtual environment**:
 ```bash
 python -m venv venv
 
@@ -64,24 +70,36 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-3. **Install dependencies**:
+4. **Install dependencies**:
 ```bash
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 ```
 
-4. **Import data** (Already done! 5000 students + 393 faculty):
+5. **Import data**:
 ```bash
+cd backend
 python import_data.py
+cd ..
 ```
 
-5. **Start the server**:
+6. **Start the server**:
+Using the batch script (Windows):
 ```bash
-python main.py
+run_project.bat
+```
+Or manually:
+```bash
+# In one terminal (Backend)
+cd backend
+python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+# In another terminal (Frontend)
+cd frontend
+python -m http.server 8080
 ```
 
-6. **Open the frontend**:
-- Open `frontend/index.html` in your browser
-- Or use: `http://localhost:8080` if running a local server
+7. **Open the frontend**:
+- Visit: `http://localhost:8080`
 
 ---
 
@@ -282,7 +300,7 @@ chatbot-system/
 ## 🔮 Future Enhancements
 
 ### Planned Features
-- [ ] Local LLM integration (Ollama)
+- [x] Local LLM integration (Ollama)
 - [ ] Voice input/output
 - [ ] Multi-language support
 - [ ] Advanced analytics dashboard
