@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Database - IMPORTANT: Don't commit user data!
+backend/chatbot.db
+backend/chatbot_backup_*.db
+*.db
+
+# Environment variables
+.env
+backend/.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+backend/*.log
+
+# OS
+.DS_Store
+Thumbs.db
